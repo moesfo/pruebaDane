@@ -1,0 +1,49 @@
+<html >
+	<title>Formulario</title>
+	<head>
+		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="assets/css/css.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.21/angular.js"> </script>
+        <script src="controller/controller.js"></script>
+		<link rel="stylesheet" type="text/css" href="assets/materialize/css/materialize.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<script type = "text/javascript" src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+      	<script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> 
+      	<script type="text/javascript" >
+			 $(document).ready(function() {
+    		 $('select').material_select();
+  			});			
+		</script>
+	</head>
+	<body ng-app="Dane">
+		<div class="form" ng-controller="Formulario">
+			<form name="userDane">	
+				<input type="text" ng-model="user.requestId" ng-model-options="{ getterSetter: true }">
+				<label>Nombres: </label><br>
+				<input class="validate" type="text" name="nombre" ng-model="user.data.nombres" ng-pattern="patternText" ><br/>
+				<label>Apellidos: </label><br>
+				<input class="validate" type="text" name="apellidos" ng-model="user.data.apellidos" ng-pattern="patternText" ><br/>
+				<label>Tipo identificación: </label><br>				
+			    <input class="validate" name="tipoDoc" type="radio" id="tipoDoc1" ng-model="user.data.tipoId" value="rut" />
+			    <label for="tipoDoc1">rut</label><br/>
+			    <input class="validate" name="tipoDoc" type="radio" id="tipoDoc2" ng-model="user.data.tipoId" value="nit" />
+			    <label for="tipoDoc2">nit</label><br/>
+			    <input class="validate" name="tipoDoc" type="radio" id="tipoDoc3" ng-model="user.data.tipoId" value="cc" />
+			    <label for="tipoDoc3">cc</label>    
+				<br/>
+				<label>Número Identificación: </label><br>
+				<input class="validate" type="text" name="numcc"  ng-model="user.data.identificacion" ng-pattern="patternNum"><br/>
+				<label>Telefono: </label><br>
+				<input  type="text" name="telefono" ng-model="user.data.telefono" ng-pattern="patternNum"><br/>
+				<label>Correo: </label><br>
+				<input type="email" name="correo" ng-model="user.data.correoe"  ><br/>
+				<label>Salario: </label><br>
+				<input type="text" name="salario" ng-model="user.data.salario" ng-pattern="patternNum" ><br/>
+				<a class="waves-effect waves-light btn" ng-click="enviar()" >Enviar</a>
+			</form>
+			<pre>{{ user | json }}</pre>
+			 
+		</div>
+	</body>
+</html>
